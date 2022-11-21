@@ -1,0 +1,35 @@
+.navigation {
+    display: flex;
+    justify-content: space-between;
+    padding: 20px;
+    font-weight: 700;
+    height: 80px;
+    align-items: center;
+    &-logo a{
+        text-decoration: none;
+        color: #000;
+        display: flex;
+        align-items: center;
+        svg {
+            color: #07a081;
+            height: 50px;
+            width: 50px;
+            margin-right: 20px;
+        }
+    }
+    &-logo a:hover {
+        opacity: 0.7;
+    }
+    &-menu {
+        display: flex;
+        width: 30%;
+        justify-content: space-between;
+        &__item a{
+            text-decoration: none;
+            color: #000;
+        }
+        &__item:hover a{
+            opacity: 0.7;
+        }
+    }
+}

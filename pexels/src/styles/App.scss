@@ -1,0 +1,11 @@
+@import 'scss-reset/_reset.scss';
+@import './font-faces.scss';
+
+body {
+    max-width: 1140px;
+    margin: 0 auto;
+}
+
+html {
+    font-family: 'PlusJakartaSans', sans-serif;
+}
