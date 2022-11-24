@@ -1,0 +1,52 @@
+.photo {
+    width: 460px;
+    position: relative;
+
+    &-img {
+        width: 100%;
+        object-fit: contain;
+    }
+
+    &-collect-btn, &-like-btn, &-download-link {
+        text-decoration: none;
+        color: #000;
+        border: 1px solid black;
+        padding: 10px;
+        border-radius: 5px;
+        background-color: #dfdfe0;
+        position: absolute;
+    }
+
+    &-collect-btn {
+        top: 20px;
+        right: 70px;
+    }
+
+    &-like-btn {
+        top: 20px;
+        right: 20px;
+    }
+
+    &-author-link {
+        position: absolute;
+        text-decoration: none;
+        color: #fff;
+        font-weight: 700;
+        bottom: 20px;
+        left: 20px;
+    }
+
+    &-download-link {
+        bottom: 20px;
+        right: 20px;
+    }
+
+    &-action {
+        display: none;
+    }
+
+}
+
+.photo:hover .photo-action {
+    display: inline-block;
+}
