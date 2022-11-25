@@ -3,6 +3,7 @@ import { Route, Routes } from 'react-router';
 import { IndexHeader } from './components/IndexHeader';
 import { Navigation } from './components/Navigation';
 import { PhotoContainer } from './components/PhotoContainer';
+import { PhotosGrid } from './components/PhotosGrid';
 import { SearchBar } from './components/SearchBar';
 import "./styles/App.scss"
 
@@ -36,7 +37,7 @@ function App() {
       {/* <SearchBar/> */}
       <Navigation />
       <IndexHeader />
-      <PhotoContainer item={photoItem}/>
+      <PhotosGrid />
     </div>
   );
 }

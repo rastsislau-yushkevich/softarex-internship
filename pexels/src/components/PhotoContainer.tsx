@@ -8,7 +8,7 @@ const PhotoContainer = (props: PhotoItem) => {
     const { url, photographer, photographer_url, src, liked, alt } = props.item;
     return(
         <div className="photo">
-            <img src={src.portrait} alt={alt} className="photo-img"/>
+            <img src={src.original} alt={alt} className="photo-img"/>
             <button className="photo-collect-btn photo-action"> <BsBookmarks /> </button>
             <button className="photo-like-btn photo-action"> <AiOutlineHeart /> </button>
             <a href={photographer_url} className="photo-author-link photo-action">{photographer}</a>

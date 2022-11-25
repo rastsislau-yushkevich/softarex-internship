@@ -1,6 +1,7 @@
 .photo {
-    width: 460px;
+    max-width: 460px;
     position: relative;
+    margin-bottom: 15px;
 
     &-img {
         width: 100%;
