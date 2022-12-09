@@ -1,0 +1,20 @@
+.parameters {
+    display: flex;
+    justify-content: space-between;
+    min-width: 23%;
+    &-btn {
+        padding: 10px;
+        border: 1px solid darkgrey;
+        border-radius: 50px;
+        text-align: center;
+        align-items: center;
+        display: flex;
+        svg {
+            margin-right: 5px;
+        }
+    }
+    &-btn:hover {
+        border-color: rgb(59, 59, 255);
+        color: rgb(59, 59, 255);
+    }
+}

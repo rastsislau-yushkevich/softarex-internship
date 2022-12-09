@@ -26,7 +26,7 @@ const IndexHeader = () => {
                 <div className="header-inner__search"><SearchBar /></div>
                 <div className="header-inner__trending">Trending: </div>
             </div>
-            <span className="header-author">Photo by </span>
+            <span className="header-author">Photo by {photo.photographer}</span>
         </header>
     )
 }
