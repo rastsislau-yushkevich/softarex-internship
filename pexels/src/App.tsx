@@ -14,8 +14,10 @@ function App() {
   return (
     <div className="App" style={{height: "200vh"}}>
       <Navigation />
-      {/* <IndexPage /> */}
-      <CategoryPage />
+      <Routes>
+        <Route path='/' element={<IndexPage />}/>
+        <Route path='/category' element={<CategoryPage />}/>
+      </Routes>
     </div>
   );
 }

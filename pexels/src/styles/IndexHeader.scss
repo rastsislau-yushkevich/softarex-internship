@@ -29,5 +29,14 @@
         position: absolute;
         bottom: 20px;
         right: 20px;
+
+        a {
+            color: #000;
+            text-decoration: none;
+        }
+
+        a:hover {
+            color: #fff;
+        }
     }
 }

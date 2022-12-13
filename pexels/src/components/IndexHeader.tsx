@@ -20,13 +20,13 @@ const IndexHeader = () => {
 
     return(
         <header className="header">
-            <img src={photo?.src.landscape} alt="" className="header-bg" />
+            <img src={photo.src?.landscape} alt="" className="header-bg" />
             <div className="header-inner">
                 <h2 className="header-inner__text">The best free stock photos, royalty free images & videos shared by creators.</h2>
                 <div className="header-inner__search"><SearchBar /></div>
                 <div className="header-inner__trending">Trending: </div>
             </div>
-            <span className="header-author">Photo by {photo.photographer}</span>
+            <span className="header-author">Photo by <a href={photo.photographer_url}>{photo.photographer}</a></span>
         </header>
     )
 }

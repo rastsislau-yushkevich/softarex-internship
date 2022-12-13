@@ -9,6 +9,9 @@ import { useLoadPhotos } from "../hooks/useLoadPhotos";
 
 const PhotosGrid = () => {
     const photos = useSelector((state: StoreState) => state.photos.photos);
+    const query = useSelector((state: StoreState) => state.photos.query);
+
+
     // const [page, setPage] = useState(1);
     // const { loading } = useLoadPhotos(page);
 
@@ -27,10 +30,8 @@ const PhotosGrid = () => {
     const dispatch = useDispatch();
 
     useEffect(() => {
-        dispatch(loadPhotos({page: 1, perPage: 9}))
-    }, [])
-
-    console.log(store.getState())
+        dispatch(loadPhotos({page: 1, perPage: 9, query}))
+    }, [query])
 
     if(!photos || photos.length === 0) {
         return null

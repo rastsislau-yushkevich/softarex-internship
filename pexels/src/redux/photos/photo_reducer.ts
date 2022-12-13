@@ -1,11 +1,12 @@
 import { stat } from "fs"
 import { Photo } from "../../types"
 import { PhotosState } from "../redux_types"
-import { SET_HEADER_PHOTO, SET_PHOTOS } from "./photo_action_types"
+import { SET_HEADER_PHOTO, SET_PHOTOS, SET_QUERY } from "./photo_action_types"
 
 const initialState = {
     photos: [],
-    photo: {} as Photo
+    photo: {} as Photo,
+    query: ""
 }
 
 export default (state: PhotosState = initialState, action: any) => {
@@ -21,6 +22,12 @@ export default (state: PhotosState = initialState, action: any) => {
             return({
                 ...state, 
                 photo: action.photo
+            })
+        };
+        case SET_QUERY: {
+            return({
+                ...state, 
+                query: action.query
             })
         }
         default: return({

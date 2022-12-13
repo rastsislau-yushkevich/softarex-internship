@@ -15,12 +15,14 @@ type PhotosResponse = {
 
 type PhotosState = {
     photos: Photo[],
-    photo: Photo
+    photo: Photo,
+    query: string
 }
 
 type SearchParams = {
     page: number,
-    perPage: number
+    perPage: number,
+    query?: string
 }
 
 export type { StoreState, PhotosResponse, PhotosState, SearchParams }
