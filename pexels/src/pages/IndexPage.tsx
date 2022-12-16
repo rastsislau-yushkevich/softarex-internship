@@ -1,6 +1,6 @@
 import React from "react";
-import { IndexHeader } from "./IndexHeader";
-import { PhotosGrid } from "./PhotosGrid";
+import { IndexHeader } from "../components/IndexHeader";
+import { PhotosGrid } from "../components/PhotosGrid";
 
 const IndexPage = () => {
     return(

@@ -1,7 +1,9 @@
 .photo {
     max-width: 460px;
     position: relative;
-    margin-bottom: 15px;
+    margin: 5px;
+    overflow: hidden;
+    // grid-row-end: span 23;
 
     &-img {
         width: 100%;

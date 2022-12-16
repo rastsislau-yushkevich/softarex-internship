@@ -4,65 +4,37 @@ import "../styles/PhotosGrid.scss";
 import { useDispatch, useSelector } from "react-redux";
 import { StoreState } from "../redux/redux_types";
 import { loadPhotos } from "../redux/photos/photo_action_creators";
+import InfiniteLoader from "react-window-infinite-loader";
 import { store } from "../redux/store";
-import { useLoadPhotos } from "../hooks/useLoadPhotos";
+import { LoaderWrapper } from "./LoaderWrapper";
+import { VariableGrid } from "./VariableGrid";
+import InfiniteScroll from "react-infinite-scroll-component";
 
 const PhotosGrid = () => {
     const photos = useSelector((state: StoreState) => state.photos.photos);
     const query = useSelector((state: StoreState) => state.photos.query);
+    const currentResponse = useSelector((state: StoreState) => state.photos.currentResponse);
+    // const isNextPageLoading = useSelector((state: StoreState) => state.photos.isLoading);
+    const [page, setPage] = useState(1);
 
-
-    // const [page, setPage] = useState(1);
-    // const { loading } = useLoadPhotos(page);
-
-    // const observer = useRef<IntersectionObserver | null>();
-    // const lastPhotoRowRef = useCallback((row: Element) => {
-    //     if(loading) return;
-    //     if(observer.current) observer.current.disconnect();
-    //     observer.current = new IntersectionObserver(entries => {
-    //         if(entries[0].isIntersecting) {
-    //             setPage(page => page+1)
-    //         }
-    //     })
-    //     if(row) observer.current.observe(row)
-    // }, [page]) as LegacyRef<HTMLDivElement>;
-   
     const dispatch = useDispatch();
 
-    useEffect(() => {
-        dispatch(loadPhotos({page: 1, perPage: 9, query}))
-    }, [query])
-
-    if(!photos || photos.length === 0) {
-        return null
-    }
-
-    const testData = [...photos];
-
-    const photosArr = [];
-    const newArrLength = testData.length/3;
-
-    while(testData.length) {
-        photosArr.push(testData.splice(0, newArrLength));
+    const loadMorePhotos = async () => {
+        await dispatch(loadPhotos({page, perPage: 3, query}));
+        setPage(page+1);
     }
 
     return(
         <div className="photos-grid">
-            {photosArr.map((photo, index) => {
-                 if(photosArr.length === index+1) {
-                    return (
-                        <div key={index} className="photos-grid-column">
-                            {photo.map((item, index) => <PhotoContainer key={item.id} item={item}/>)}
-                        </div>
-                    )
-                } else {
-                    return(
-                        <div key={index} className="photos-grid-column">
-                            {photo.map((item, index) => <PhotoContainer key={item.id} item={item}/>)}
-                        </div>
-                    )
-                }
-            })}
+            {/* <VariableGrid /> */}
+                <InfiniteScroll
+                    dataLength={photos.length}
+                    next={loadMorePhotos}
+                    hasMore={!!currentResponse.next_page}
+                    loader={<h4>Loading...</h4>}
+                    >
+                    {photos.map((item) => <PhotoContainer key={item.id} item={item}/>)}
+                </InfiniteScroll>
         </div>
     )
 }

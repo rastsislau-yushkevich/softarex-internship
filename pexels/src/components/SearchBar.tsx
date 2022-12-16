@@ -13,13 +13,13 @@ const SearchBar = () => {
 
     const handleSearch = () => {
         dispatch(setQuery(searchQuery))
-        console.log(searchQuery);
         navigate("/category")
+        localStorage.setItem("query", searchQuery)
     }
 
     return(
         <div className="search-bar">
-            <input className="search-bar__input" type="text" value={searchQuery} name="" id="" placeholder="Search for free photos" onChange={e => setSearchQuery(e.target.value)}/>
+            <input className="search-bar__input" type="text" value={searchQuery ? searchQuery : JSON.stringify(localStorage.getItem("query")).replace(/['"]+/g, '')} name="" id="" placeholder="Search for free photos" onChange={e => setSearchQuery(e.target.value)}/>
             <button className="search-bar__btn" onClick={handleSearch}><BiSearchAlt2 /></button>
         </div>
     )

@@ -16,7 +16,9 @@ type PhotosResponse = {
 type PhotosState = {
     photos: Photo[],
     photo: Photo,
-    query: string
+    query: string, 
+    currentResponse: PhotosResponse,
+    isLoading: boolean
 }
 
 type SearchParams = {

@@ -1,8 +1,8 @@
 import React from 'react';
 import { Route, Routes } from 'react-router';
-import { CategoryPage } from './components/CategoryPage';
+import { CategoryPage } from './pages/CategoryPage';
 import { IndexHeader } from './components/IndexHeader';
-import { IndexPage } from './components/IndexPage';
+import { IndexPage } from './pages/IndexPage';
 import { Navigation } from './components/Navigation';
 import { ParameterButtons } from './components/ParameterButtons';
 import { PhotoContainer } from './components/PhotoContainer';
@@ -12,7 +12,7 @@ import "./styles/App.scss"
 
 function App() {
   return (
-    <div className="App" style={{height: "200vh"}}>
+    <div className="App" style={{height: "400vh"}}>
       <Navigation />
       <Routes>
         <Route path='/' element={<IndexPage />}/>

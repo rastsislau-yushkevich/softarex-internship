@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import { SiPexels } from "react-icons/si"
 import "../styles/Navigation.scss"
 import { SearchBar } from "./SearchBar";
@@ -8,22 +8,23 @@ import { useDispatch, useSelector } from "react-redux";
 
 const Navigation = () => {
     const [nav, changeNav] = useState(false)
+    const location = useLocation().pathname;
 
     useEffect(() => {
-        window.addEventListener("scroll", () => {
+        const handleScroll = () => {
             changeNav(window.scrollY > 750)
-        })
+        }
+        window.addEventListener("scroll", handleScroll);
+        return () => window.removeEventListener("scroll", handleScroll);
     }, [])
 
     return(
-        <div className="nav-wrapper" style={nav ? {position: "fixed", top: 0, left: 0, backgroundColor: "#fff"} : {}}>
+        <div className="nav-wrapper" style={nav || location !== "/" ? {position: "fixed", top: 0, left: 0, backgroundColor: "#fff"} : {}}>
             <nav className="navigation">
             <div className="navigation-logo"><Link to="/"><SiPexels />Pexels</Link></div>
-            {nav ? <div className="navigation-search"><SearchBar /></div> : ""}
+            {nav || location !== "/" ? <div className="navigation-search"><SearchBar /></div> : ""}
             <ul className="navigation-menu">
-                <li className="navigation-menu__item"><Link to="/category">Explore</Link></li>
-                <li className="navigation-menu__item"><Link to="/category">License</Link></li>
-                <li className="navigation-menu__item"><Link to="/category">Upload</Link></li>
+                <li className="navigation-menu__item"><Link to="/category">Category</Link></li>
             </ul>
         </nav>
         </div>

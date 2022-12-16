@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { SearchBar } from "./SearchBar";
 import "../styles/IndexHeader.scss";
 import { useDispatch, useSelector } from "react-redux";
@@ -10,13 +10,15 @@ const IndexHeader = () => {
     const photo = useSelector((state: StoreState) => state.photos.photo);
     const dispatch = useDispatch();
 
+    const getRandomPhoto = (max) => {
+        return Math.floor(Math.random() * max);
+    }
+
     useEffect(() => {
-        dispatch(loadPhotos({page: 2, perPage: 1}))
+        dispatch(loadPhotos({page: getRandomPhoto(20), perPage: 1}))
     }, [])
 
     if(!photo) return null;
-
-    console.log(store.getState())
 
     return(
         <header className="header">
